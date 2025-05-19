@@ -83,15 +83,20 @@ Arrange Columns  in order('Area','Year','Item','average_rain_fall_mm_per_year','
 The final dataset was well-prepared for modeling crop yields based on environmental factors to predict crop yield.
 
 9.train test split
+
 10.fit and transform data into x_train dummy and x_test_dummy
+
 11.Model training
 I have used ,linearRegression, Ridge, Lasso,KNeighborsRegressor,DecisionTreeRegressor
+
 #Result
 LinearRegression MSE: 1407140867.3618488 Score0.7071448260289731
 Ridge MSE: 1407203899.7394783 Score0.7071317076850001
 Lasso MSE: 1406919421.657399 Score0.7071909134689772
 Knr MSE: 154385259.4155923 Score0.9678692282674717
 DecisionTree MSE: 138583870.68658906 Score0.9711578247062148
+
 #Chose the model that has high score ansd less mse,so here we chose decission tree which is best choice for this data #Decision tree do not need to aplly encoding and feature scalling as it has capability to encode categorical data by itself
+
 #Recommendations
 Could incorporate soil quality data, farming practices, or economic indicators.Satellite/remote sensing data could enhance predictions
