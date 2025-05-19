@@ -82,9 +82,9 @@ Arrange Columns  in order('Area','Year','Item','average_rain_fall_mm_per_year','
 8.Encoding and scalling at a same time(encoding and feature scalling)
 The final dataset was well-prepared for modeling crop yields based on environmental factors to predict crop yield.
 
-9.train test split
+9.Train test split
 
-10.fit and transform data into x_train dummy and x_test_dummy
+10.Fit and transform data into x_train dummy and x_test_dummy
 
 11.Model training
 I have used ,linearRegression, Ridge, Lasso,KNeighborsRegressor,DecisionTreeRegressor
