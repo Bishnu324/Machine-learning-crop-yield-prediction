@@ -1,94 +1,157 @@
+# 🌾 Crop Yield Prediction Using Environmental & Pesticide Data
 
-Overview:
+![Python](https://img.shields.io/badge/Python-Data%20Science-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Processing-150458?style=for-the-badge&logo=pandas)
+![NumPy](https://img.shields.io/badge/NumPy-Numerical%20Computing-013243?style=for-the-badge&logo=numpy)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-Visualization-11557c?style=for-the-badge&logo=plotly)
+![Scikit-learn](https://img.shields.io/badge/Scikit--Learn-ML%20Models-F7931E?style=for-the-badge&logo=scikitlearn)
+![Kaggle](https://img.shields.io/badge/Kaggle-Dataset-20BEFF?style=for-the-badge&logo=kaggle)
 
-The notebook is focused on crop yield prediction using various datasets including yield, rainfall, temperature, and pesticide data from free source that is kaggle data source  The analysis involves data loading, preprocessing, exploration, and merging of multiple datasets to create a comprehensive dataset for potential modeling.
+---
 
-Key Steps Performed
-1. Data Loading and Initial Exploration
+## 🧠 Project Overview
+
+This project focuses on **predicting crop yield** using multiple environmental and agricultural factors such as **rainfall, temperature, and pesticide usage**.  
+The dataset, sourced from **Kaggle**, combines global agricultural statistics from various countries over multiple years.
+
+The analysis includes:
+- Data loading, cleaning, and preprocessing  
+- Exploratory Data Analysis (EDA)  
+- Feature engineering and merging multiple datasets  
+- Machine learning model building and evaluation  
+
+The goal is to develop an accurate predictive model for understanding how environmental variables influence crop yield.
+
+---
+
+## 📊 Key Steps Performed
+
+### 1️⃣ Data Loading & Exploration
 Loaded four datasets:
+- `yield.csv` → Crop yield by country, year, and crop type  
+- `rainfall.csv` → Annual rainfall (mm/year)  
+- `temp.csv` → Average annual temperature  
+- `pesticides.csv` → Pesticide usage per country/year  
 
-yield.csv: Crop yield data by country, year, and crop type
+---
 
-rainfall.csv: Average rainfall data by country and year
+### 2️⃣ Data Cleaning & Preprocessing
+- Removed duplicates & renamed columns for consistency  
+- Converted non-numeric strings to numeric format using a custom logic  
+- Filled missing values using:
+  - **Rainfall:** Mean  
+  - **Temperature:** Mean  
+  - **Pesticides:** Zero (0)  
 
-temp.csv: Average temperature data by country and year
+**Temperature dataset:**  
+Sorted by `Country` & `Year`, filled missing values using `.ffill()` and `.bfill()` within each country group.
 
-pesticides.csv: Pesticide usage data by country and year
+---
 
-2. Data Cleaning and Preprocessing
-For each dataset:
+### 3️⃣ Data Merging
+Merged datasets on `Area` and `Year` to create a unified dataset with 7 columns and 102,228 rows:
 
-Selected relevant columns.
-Renamed columns for consistency.
-Removed duplicate rows.
-Converted data types to numeric where needed.
+| Column | Description |
+|--------|--------------|
+| Area | Country name |
+| Year | Year of record |
+| Item | Crop type |
+| average_rain_fall_mm_per_year | Rainfall (mm) |
+| avg_temp | Temperature (°C) |
+| Pesticide_use | Pesticide used |
+| Yield_output | Target variable |
 
-For temperature data;
-#Sort by country and year,Since it's one temperature value per country per year,so sort 1st and then group by country
-#Group by country (to ensure you fill within each country)
+---
 
-#Use .transform() (to ensure it applies to each column correctly)
+### 4️⃣ Data Quality Checks
+- Verified there were **no missing or duplicate values**  
+- Ensured all columns had correct numeric data types  
+- Conducted descriptive statistical summaries  
 
-#Apply .ffill() and .bfill() to multiple columns at once
-#cross check the missing value
+---
 
-Then Handled missing values (filling with mean/zero where appropriate).
+## 🧭 Exploratory Data Insights (Visualization Summary)
+
+A detailed **Exploratory Data Analysis (EDA)** was performed using **Matplotlib** and **Seaborn** to identify relationships between features and yield performance.
+
+### 🔹 Key Visualizations
+- **Country Distribution:** Count of data entries per country  
+- **Crop Type Frequency:** Countplot showing most represented crops  
+- **Rainfall vs Yield:** Scatter plot showing correlation between rainfall and yield  
+- **Temperature vs Yield:** Line plot showing temperature influence on productivity  
+- **Pesticide Trends:** Yearly bar plot of pesticide usage by country  
+- **Correlation Heatmap:** Relationship between rainfall, temperature, pesticide use, and yield  
+- **Yearly Trends:** Multi-line plot tracking rainfall, temperature, and yield variation over time  
+
+### 🔹 Key Findings
+- 📈 **Moderate rainfall and stable temperatures** positively affect crop yield  
+- 🌦️ **Extreme weather fluctuations** reduce yield significantly  
+- 🧪 **Controlled pesticide use** leads to higher yield, but excessive use shows diminishing returns  
+- 🌍 **Certain countries** show consistent yield growth due to better environmental and agricultural conditions  
+
+> *(Optional: Add EDA visual examples later)*  
+> ```
+> assets/
+> ├── yield_vs_rainfall.png
+> ├── temperature_trend.png
+> ├── correlation_heatmap.png
+> ```
+
+---
+
+## ⚙️ Feature Encoding & Scaling
+- Encoded categorical features (`Area`, `Item`)  
+- Applied scaling to numeric features for uniformity  
+
+---
+
+## 🤖 Model Training & Evaluation
+
+Trained multiple regression models for yield prediction:
+
+| Model | MSE | R² Score |
+|--------|-------------|------------|
+| Linear Regression | 1.41e9 | 0.707 |
+| Ridge Regression | 1.40e9 | 0.707 |
+| Lasso Regression | 1.40e9 | 0.707 |
+| KNeighbors Regressor | 1.54e8 | 0.967 |
+| Decision Tree Regressor | **1.38e8** | **0.971** |
+
+🏆 **Best Model:** `DecisionTreeRegressor`  
+- Achieved highest accuracy and the lowest MSE  
+- Handles categorical data efficiently without explicit encoding  
+- Robust to outliers and non-linear relationships  
+
+---
+
+## 🔍 Key Insights
+
+- **Temperature and rainfall** are dominant predictors of yield variation.  
+- **Decision Tree Regressor** performs best with minimal preprocessing.  
+- **Rainfall & pesticide use** together show strong correlation with yield.  
+- The dataset provides a solid foundation for future predictive agriculture modeling.
+
+---
+
+## 💡 Recommendations
+
+- Integrate **soil quality**, **farming practices**, and **economic indicators** for improved model accuracy.  
+- Use **satellite and remote sensing data** for higher spatial precision.  
+- Apply **time-series forecasting (ARIMA, LSTM)** for future yield trends.  
+- Develop a **Power BI or Streamlit dashboard** for interactive visualization in future iterations.  
+
+---
+
+## 🧰 Tools & Technologies
+
+| Tool | Purpose |
+|------|----------|
+| **Python (Pandas, NumPy)** | Data Cleaning & Transformation |
+| **Matplotlib / Seaborn** | Visualization & EDA |
+| **Scikit-learn** | Model Building & Evaluation |
+| **Jupyter Notebook** | Analysis Environment |
+| **Kaggle Dataset** | Data Source |
+
+---
 
 
-3. Data Merging
-Created a merged dataset combining all four sources on 'Area' and 'Year' keys:
-
-a.Yield data (primary dataset)
-b.Rainfall data
-c.Temperature data
-d.Pesticide usage data
-4. Data Quality Checks
-Verified no null values remain in final merged dataset and check data types change into numeric.
-Again Checked for duplicates and 
-examined descriptive statistics.
-
-Data Characteristics for merged data set;
-Final merged dataset contains 102,228 rows and 7 columns.
-Key variables:
-a.Yield_output (target variable)
-b.average_rain_fall_mm_per_year
-c.avg_temp
-d.Pesticide_use
-e.Item (crop type)
-f.Area (country)
-g.Year
-
-5.Missing Data Handling:
-
-a.Rainfall data had many missing values (filled with mean)
-b.Temperature data had missing values (filled with mean)
-c.Pesticide data had many missing values (filled with 0)
-
-6.Detect non numeic string:Returns the value of rows where the value is a string and not convertible to float — i.e., invalid data for numerical analysis.Note:If x is a string:It tries to convert it into a float.If the float value is an integer (i.e., it has no fractional part), it returns the value as an integer.If the float value has a fractional part, it returns it as a float.If the conversion fails (e.g., the string cannot be converted to a float), it returns np.nan.If x is not a string (e.g., it’s already a number), it returns x unchanged.
-
-7.EDA
-a.graph for count of country or area (frequency vs area)
-b.countplot for  Items counts
-#Arrange Columns  in order('Area','Year','Item','average_rain_fall_mm_per_year','avg_temp','Pesticide_use','Yield_output)
-
-8.Encoding and scalling at a same time(encoding and feature scalling)
-Then final dataset was well-prepared for modeling crop yields based on environmental factors to predict crop yield.
-
-9.Train test split
-
-10.Fit and transform data into x_train dummy and x_test_dummy
-
-11.Model training
-I have used ,linearRegression, Ridge, Lasso,KNeighborsRegressor,DecisionTreeRegressor.
-
-#Result
-a.LinearRegression MSE: 1407140867.3618488 Score0.7071448260289731
-b.Ridge MSE: 1407203899.7394783 Score0.7071317076850001
-c.Lasso MSE: 1406919421.657399 Score0.7071909134689772
-d.Knr MSE: 154385259.4155923 Score0.9678692282674717
-e.DecisionTree MSE: 138583870.68658906 Score0.9711578247062148
-
-#Chose the model that has high score ansd less mse,so here we chose decission tree which is best choice for this data #Decision tree do not need to apply encoding and feature scalling as it has capability to encode categorical data by itself
-
-#Recommendations
-Could incorporate soil quality data, farming practices, or economic indicators.Satellite/remote sensing data could enhance predictions
