@@ -82,7 +82,7 @@ A detailed **Exploratory Data Analysis (EDA)** was performed using **Matplotlib*
 ![Yield vs Rainfall](assets/yield_vs_rainfall.png)
 
 2. **Temperature Trend**  
-![Temperature Trend](assets/temperature_trend.png)
+![Temperature Trend]("https://github.com/Bishnu324/Machine-learning-crop-yield-prediction/blob/main/temperature_trend.jpg")
 
 3. **Correlation Heatmap**  
 ![Correlation Heatmap](assets/correlation_heatmap.png)
