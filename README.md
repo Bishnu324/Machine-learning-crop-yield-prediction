@@ -48,20 +48,7 @@ Sorted by `Country` & `Year`, filled missing values using `.ffill()` and `.bfill
 
 ---
 
-### 3️⃣ Data Merging
-Merged datasets on `Area` and `Year` to create a unified dataset with 7 columns and 102,228 rows:
 
-| Column | Description |
-|--------|--------------|
-| Area | Country name |
-| Year | Year of record |
-| Item | Crop type |
-| average_rain_fall_mm_per_year | Rainfall (mm) |
-| avg_temp | Temperature (°C) |
-| Pesticide_use | Pesticide used |
-| Yield_output | Target variable |
-
----
 
 ### 4️⃣ Data Quality Checks
 - Verified there were **no missing or duplicate values**  
@@ -89,13 +76,16 @@ A detailed **Exploratory Data Analysis (EDA)** was performed using **Matplotlib*
 - 🧪 **Controlled pesticide use** leads to higher yield, but excessive use shows diminishing returns  
 - 🌍 **Certain countries** show consistent yield growth due to better environmental and agricultural conditions  
 
-> *(Optional: Add EDA visual examples later)*  
-> ```
-> assets/
-> ├── yield_vs_rainfall.png
-> ├── temperature_trend.png
-> ├── correlation_heatmap.png
-> ```
+> ### Exploratory Data Analysis (EDA)
+
+1. **Yield vs Rainfall**  
+![Yield vs Rainfall](assets/yield_vs_rainfall.png)
+
+2. **Temperature Trend**  
+![Temperature Trend](assets/temperature_trend.png)
+
+3. **Correlation Heatmap**  
+![Correlation Heatmap](assets/correlation_heatmap.png)
 
 ---
 
