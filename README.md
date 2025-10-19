@@ -76,17 +76,6 @@ A detailed **Exploratory Data Analysis (EDA)** was performed using **Matplotlib*
 - 🧪 **Controlled pesticide use** leads to higher yield, but excessive use shows diminishing returns  
 - 🌍 **Certain countries** show consistent yield growth due to better environmental and agricultural conditions  
 
-> ### Exploratory Data Analysis (EDA)
-
-1. **Yield vs Rainfall**  
-![Yield vs Rainfall](assets/yield_vs_rainfall.png)
-
-2. **Temperature Trend**  
-![Temperature Trend]("https://github.com/Bishnu324/Machine-learning-crop-yield-prediction/blob/main/temperature_trend.jpg")
-
-3. **Correlation Heatmap**  
-![Correlation Heatmap]("https://github.com/Bishnu324/Machine-learning-crop-yield-prediction/blob/main/correlation_heatmap.jpg")
-
 ---
 
 ## ⚙️ Feature Encoding & Scaling
